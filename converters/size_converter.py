@@ -24,6 +24,10 @@ class Size:
             if 'BBW' in self.sku:
                 sizes['BBW'][size]
             else:
+                try:
+                    size = size.replace(' 2E', '')
+                except:
+                    pass
                 return sizes['New_balance'][size]
         else:
             return sizes['M'][size]
