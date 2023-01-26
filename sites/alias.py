@@ -79,6 +79,23 @@ class Alias:
         for row in rows['availability']:
             if row['variant']['product_condition'] == 'PRODUCT_CONDITION_NEW':
                 size = row['variant']['size']
+
+                # If less thand 10 sales then pass
+                if '.' not in str(size):
+                    s = str(size)+'.0'
+                else:
+                    s = str(size)
+                data = {"count": "10", "variant": {"id": product, "size": s, "productCondition": '1',
+                                                   "packagingCondition": '1', "consigned": 'false', "regionId": "2"}}
+                sales = json.loads(self.scraper.post(data=json.dumps(
+                    data), headers=self.headers, url=self.url+'/analytics/orders/recent').text)
+                try:
+                    if len(sales['recent_sales']) < 10:
+                        continue
+                except:
+                    # If empty
+                    continue
+
                 try:
                     price = int(row['lowest_price_cents'][:-2])
                     if self.__get_price(net_price, price) == True:

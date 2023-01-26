@@ -6,7 +6,7 @@ Find sizes which profit is above given margin. Sites which are scrapped:
 StockX sometimes ends up blocked by PerimeterX, so the program will notify you when something is wrong and PerimeterX needs to be resolved.<br /> 
 
 ## Converters
-Converts sizes in US to EU sizes.
+Converts sizes from US to EU sizes.
 
 
 ## Input

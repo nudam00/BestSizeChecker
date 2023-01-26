@@ -6,6 +6,7 @@ from playwright_stealth import stealth_sync
 import os
 from openpyxl import Workbook
 import pandas as pd
+from converters.size_converter import Size
 
 
 if __name__ == "__main__":
@@ -38,7 +39,7 @@ if __name__ == "__main__":
             'stockx_password'), get_settings('margin'), page, get_settings('stockx_fee'))
 
         df = pd.DataFrame(
-            columns=['Product_name', 'SKU', 'StockX_sizes', 'Alias_sizes', 'PID'])
+            columns=['Product_name', 'SKU', 'Sizes', 'PID'])
         excel = pd.read_excel('input/sneakers.xlsx')
 
         for index, row in excel.iterrows():
@@ -55,14 +56,23 @@ if __name__ == "__main__":
             product_name = stockx_data[0]
             stockx_sizes = stockx_data[1]
 
-            new_row = {'Product_name': product_name, 'SKU': sku,
-                       'StockX_sizes': stockx_sizes, 'Alias_sizes': alias_sizes, 'PID': pid}
+            # Converter
+            sizes = Size(sku, product_name)
+            try:
+                stockx_sizes = [sizes.get_size(str(x)) for x in stockx_sizes]
+                alias_sizes = [sizes.get_size(str(x)) for x in alias_sizes]
+                result = alias_sizes + \
+                    list(set(stockx_sizes) - set(alias_sizes))
+            except:
+                result = stockx_sizes
+
+            new_row = {'Product_name': product_name,
+                       'SKU': sku, 'Sizes': result, 'PID': pid}
 
             df = df.append(new_row, ignore_index=True)
             print('\n'+product_name)
             print(sku)
-            print(
-                {'StockX_sizes: ': stockx_sizes, 'Alias_sizes': alias_sizes})
+            print({'Sizes': result})
 
     with pd.ExcelWriter('output/sizes.xlsx', engine='openpyxl', mode='a') as writer:
         df.to_excel(writer)

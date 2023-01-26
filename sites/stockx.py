@@ -60,7 +60,7 @@ class StockX():
                     'xpath=//*[@id="product-search-results"]/div[1]/div').click()
 
                 self.p.wait_for_load_state('load')
-                time.sleep(1)
+                time.sleep(3)
                 break
             except:
                 print(
@@ -77,18 +77,20 @@ class StockX():
         t = 2
         sizes = []
         for i in range(1, len(size)):
-            try:
-                size = self.p.locator(
-                    'xpath=//*[@id="main-container"]/div[1]/div[2]/div[3]/div/button[{}]/div'.format(i)).inner_text()
-                self.p.locator(
-                    'xpath=//*[@id="main-container"]/div[1]/div[2]/div[3]/div/button[{}]'.format(i)).click()
-                price = float(self.p.locator(
-                    'xpath=//*[@id="main-container"]/div[1]/div[2]/div[5]/div[{}]/div[3]/div/span/div/div/input'.format(t)).get_attribute("value"))+1
-                t += 2
-                if self.__get_price(net_price, price) == True:
-                    sizes.append(size)
-            except:
-                continue
+            while True:
+                try:
+                    size = self.p.locator(
+                        'xpath=//*[@id="main-container"]/div[1]/div[2]/div[3]/div/button[{}]/div'.format(i)).inner_text()
+                    self.p.locator(
+                        'xpath=//*[@id="main-container"]/div[1]/div[2]/div[3]/div/button[{}]'.format(i)).click()
+                    price = float(self.p.locator(
+                        'xpath=//*[@id="main-container"]/div[1]/div[2]/div[5]/div[{}]/div[3]/div/span/div/div/input'.format(t)).get_attribute("value"))+1
+                    t += 2
+                    if self.__get_price(net_price, price) == True:
+                        sizes.append(size)
+                    break
+                except:
+                    pass
 
         # Item name
         item_name1 = self.p.locator(
