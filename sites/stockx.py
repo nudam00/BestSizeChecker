@@ -76,15 +76,18 @@ class StockX():
         # Lowest ask
         t = 2
         sizes = []
-        for i in range(1, len(size)):
+        for i in range(1, len(size)+1):
             while True:
                 try:
                     size = self.p.locator(
                         'xpath=//*[@id="main-container"]/div[1]/div[2]/div[3]/div/button[{}]/div'.format(i)).inner_text()
                     self.p.locator(
                         'xpath=//*[@id="main-container"]/div[1]/div[2]/div[3]/div/button[{}]'.format(i)).click()
-                    price = float(self.p.locator(
-                        'xpath=//*[@id="main-container"]/div[1]/div[2]/div[5]/div[{}]/div[3]/div/span/div/div/input'.format(t)).get_attribute("value"))+1
+                    try:
+                        price = float(self.p.locator(
+                            'xpath=//*[@id="main-container"]/div[1]/div[2]/div[5]/div[{}]/div[3]/div/span/div/div/input'.format(t)).get_attribute("value"))+1
+                    except:
+                        price = 0
                     t += 2
                     if self.__get_price(net_price, price) == True:
                         sizes.append(size)
@@ -101,7 +104,7 @@ class StockX():
         return [item_name1+" "+item_name2, sizes]
 
     def __get_price(self, net_price, price):
-        # Compare self.margin from settings to margin based on alias price in USD and net price in PLN
+        # Compare self.margin from settings to margin based on stockx price in USD and net price in PLN
 
         try:
             price = (price-(price*0.03)-(price*self.stockx_fee))*self.usd

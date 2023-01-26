@@ -13,12 +13,12 @@ if __name__ == "__main__":
     print('sneakers.xlsx:\n'
           '1. Write sku\n'
           "2. Write net price in PLN\n"
-          "3. Optional: Write PID from Zalando\n"
+          "3. Optional: For example, write PID from Zalando (just for output)\n"
           '\n'
           'Write anything when you would like to start\n')
     input()
 
-    # Preparing
+    # Preparing files
     try:
         os.remove("output/sizes.xlsx")
     except FileNotFoundError:
@@ -38,6 +38,7 @@ if __name__ == "__main__":
         stockx = StockX(get_settings('username'), get_settings(
             'stockx_password'), get_settings('margin'), page, get_settings('stockx_fee'))
 
+        # Creating dataframe
         df = pd.DataFrame(
             columns=['Product_name', 'SKU', 'Sizes', 'PID'])
         excel = pd.read_excel('input/sneakers.xlsx')

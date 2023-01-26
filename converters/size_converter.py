@@ -16,9 +16,7 @@ class Size:
                 return sizes['UGG'][size]
             else:
                 return sizes['W'][size]
-        elif 'Y' in size:
-            return sizes['Y'][size]
-        elif 'C' in size:
+        elif 'C' in size or 'TD' in self.name:
             return sizes['C'][size]
         elif 'adidas' in self.name:
             return sizes['Adidas'][size]

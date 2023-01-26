@@ -16,12 +16,12 @@ Converts sizes from US to EU sizes.
 ### sneakers.xlsx
 1. Write SKU.
 2. Write net price.
-3. Optional: write PID (for example Zalando, it is used only for output).
+3. Optional: write PID (for example Zalando, it is used for output only).
 <br />
 
 ## Output
 ### sizes.xslx
-Look at StockX and Alias sizes in EU.
+Look at best sizes in EU.
 <br />
 
 ## Sites

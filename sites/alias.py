@@ -36,7 +36,7 @@ class Alias:
                     data), headers=self.headers, url=self.url+'/unstable/users/login')
                 access = json.loads(r.text)["auth_token"]['access_token']
                 self.headers['Authorization'] = 'Bearer {}'.format(access)
-                print("Logged into alias account and Restocks region selected")
+                print("Logged into alias account")
                 return scraper
             except:
                 continue
@@ -80,7 +80,7 @@ class Alias:
             if row['variant']['product_condition'] == 'PRODUCT_CONDITION_NEW':
                 size = row['variant']['size']
 
-                # If less thand 10 sales then pass
+                # If less than 10 sales then pass
                 if '.' not in str(size):
                     s = str(size)+'.0'
                 else:
