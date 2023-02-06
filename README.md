@@ -3,7 +3,7 @@ Find sizes which profit is above given margin. Sites which are scrapped:
 1. StockX (playwright) - prices must be in USD. 
 2. Alias (requests) - prices must be in USD.
 <br /> 
-StockX sometimes ends up blocked by PerimeterX, so the program will notify you when something is wrong and PerimeterX needs to be resolved<br /> 
+StockX sometimes ends up blocked by PerimeterX, so the program will notify you when something is wrong and PerimeterX needs to be resolved..<br /> 
 
 ## Converters
 Converts sizes from US to EU sizes.
