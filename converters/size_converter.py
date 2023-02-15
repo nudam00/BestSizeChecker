@@ -11,16 +11,7 @@ class Size:
         json_file = open("converters/sizes.json")
         sizes = json.load(json_file)
 
-        if '(W)' in self.name:
-            if 'UGG' in self.name:
-                return sizes['UGG'][size]
-            else:
-                return sizes['W'][size]
-        elif 'C' in size or 'TD' in self.name:
-            return sizes['C'][size]
-        elif 'adidas' in self.name:
-            return sizes['Adidas'][size]
-        elif 'GSB' in self.sku or 'BB' in self.sku:
+        if 'GSB' in self.sku or 'BB' in self.sku:
             if 'BBW' in self.sku:
                 sizes['BBW'][size]
             else:
@@ -29,5 +20,14 @@ class Size:
                 except:
                     pass
                 return sizes['New_balance'][size]
+        elif '(W)' in self.name:
+            if 'UGG' in self.name:
+                return sizes['UGG'][size]
+            else:
+                return sizes['W'][size]
+        elif 'C' in size or 'TD' in self.name:
+            return sizes['C'][size]
+        elif 'adidas' in self.name:
+            return sizes['Adidas'][size]
         else:
             return sizes['M'][size]

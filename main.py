@@ -13,7 +13,7 @@ if __name__ == "__main__":
     print('sneakers.xlsx:\n'
           '1. Write sku\n'
           "2. Write net price in PLN\n"
-          "3. Optional: For example, write PID from Zalando(just for output)\n"
+          "3. Optional: For example, write PID from Zalando (just for output)\n"
           '\n'
           'Write anything when you would like to start\n')
     input()
