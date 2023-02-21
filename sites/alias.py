@@ -1,7 +1,7 @@
 import time
 import json
 import cloudscraper
-from add import get_exchange
+from add import get_settings
 
 
 class Alias:
@@ -19,8 +19,9 @@ class Alias:
                         'Connection': 'keep-alive',
                         'Host': 'sell-api.goat.com',
                         }
+        self.proxy = get_settings('proxy')
         self.scraper = self.__log_in(username, password)
-        self.usd = get_exchange()
+        self.usd = get_settings('usd_rate')
         self.margin = margin
 
     def __log_in(self, username, password):
@@ -33,7 +34,7 @@ class Alias:
         while True:
             try:
                 r = scraper.post(data=json.dumps(
-                    data), headers=self.headers, url=self.url+'/unstable/users/login')
+                    data), headers=self.headers, url=self.url+'/unstable/users/login', proxies={"https": self.proxy})
                 access = json.loads(r.text)["auth_token"]['access_token']
                 self.headers['Authorization'] = 'Bearer {}'.format(access)
                 print("Logged into alias account")
@@ -58,7 +59,8 @@ class Alias:
             'Connection': 'keep-alive',
             'Host': '2fwotdvm2o-dsn.algolia.net'
         }
-        r = self.scraper.get(headers=headers, url=url)
+        r = self.scraper.get(headers=headers, url=url,
+                             proxies={"https": self.proxy})
         try:
             return str([x['slug'] for x in json.loads(r.text)['hits']][0])
         except IndexError:
@@ -74,7 +76,7 @@ class Alias:
         data = {"variant": {"id": product, "packagingCondition": '1',
                             "consigned": 'false', "regionId": "2"}}
         rows = json.loads(self.scraper.post(data=json.dumps(
-            data), headers=self.headers, url=self.url+'/analytics/list-variant-availabilities').text)
+            data), headers=self.headers, url=self.url+'/analytics/list-variant-availabilities', proxies={"https": self.proxy}).text)
         sizes = []
         for row in rows['availability']:
             if row['variant']['product_condition'] == 'PRODUCT_CONDITION_NEW':
@@ -88,7 +90,7 @@ class Alias:
                 data = {"count": "10", "variant": {"id": product, "size": s, "productCondition": '1',
                                                    "packagingCondition": '1', "consigned": 'false', "regionId": "2"}}
                 sales = json.loads(self.scraper.post(data=json.dumps(
-                    data), headers=self.headers, url=self.url+'/analytics/orders/recent').text)
+                    data), headers=self.headers, url=self.url+'/analytics/orders/recent', proxies={"https": self.proxy}).text)
                 try:
                     if len(sales['recent_sales']) < 10:
                         continue

@@ -13,7 +13,7 @@ class Size:
 
         if 'GSB' in self.sku or 'BB' in self.sku:
             if 'BBW' in self.sku:
-                sizes['BBW'][size]
+                return sizes['BBW'][size]
             else:
                 try:
                     size = size.replace(' 2E', '')

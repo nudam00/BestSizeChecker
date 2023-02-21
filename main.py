@@ -33,9 +33,9 @@ if __name__ == "__main__":
         stealth_sync(page)
 
         # Logging in
-        alias = Alias(get_settings('username'), get_settings(
+        alias = Alias(get_settings('alias_username'), get_settings(
             'alias_password'), get_settings('margin'))
-        stockx = StockX(get_settings('username'), get_settings(
+        stockx = StockX(get_settings('email'), get_settings(
             'stockx_password'), get_settings('margin'), page, get_settings('stockx_fee'))
 
         # Creating dataframe
