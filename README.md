@@ -15,7 +15,7 @@ Converts sizes from US to EU sizes.
 
 ### settings.json - write your credentials on Alias and StockX, your StockX fee and margin.
 
-`{"username": "x", "alias_password": "x", "stockx_password": "x", "stockx_fee": 0.085, "margin": 0.1}`
+`{"email": "x", "alias_username": "x", "alias_password": "x", "stockx_password": "x", "stockx_fee": 0.x, "usd_rate": x, "proxy": "http://username:passw@ip:port"}`
 
 ### sneakers.xlsx
 
