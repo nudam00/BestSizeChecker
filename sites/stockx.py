@@ -85,7 +85,7 @@ class StockX():
                         'xpath=//*[@id="main-container"]/div[1]/div[2]/div[3]/div/button[{}]'.format(i)).click()
                     try:
                         price = float(self.p.locator(
-                            'xpath=//*[@id="main-container"]/div[1]/div[2]/div[5]/div[{}]/div[3]/div/span/div/div/input'.format(t)).get_attribute("value"))+1
+                            'xpath=//*[@id="main-container"]/div[1]/div[2]/div[5]/div[{}]/div[3]/div/span/div/div/input'.format(t)).get_attribute("value"))
                     except:
                         price = 0
                     t += 2

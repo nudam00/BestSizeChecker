@@ -99,7 +99,7 @@ class Alias:
                     continue
 
                 try:
-                    price = int(row['lowest_price_cents'][:-2])
+                    price = int(row['lowest_price_cents'][:-2])-1
                     if self.__get_price(net_price, price) == True:
                         sizes.append(size)
                 except:
