@@ -1,6 +1,6 @@
 # SneakersBestSizes
 
-Find sizes which profit is above given margin. Scrapped sites:
+Find sizes where profit is above given margin. Scrapped sites:
 
 1. StockX (playwright) - prices must be in USD.
 2. Alias (requests) - prices must be in USD.

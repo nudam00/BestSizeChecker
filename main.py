@@ -67,6 +67,11 @@ if __name__ == "__main__":
             except:
                 result = stockx_sizes
 
+            try:
+                result = sorted(result)
+            except:
+                pass
+
             new_row = {'Product_name': product_name,
                        'SKU': sku, 'Sizes': result, 'PID': pid}
 

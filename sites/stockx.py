@@ -29,7 +29,7 @@ class StockX():
             self.p.locator('xpath=//button[@class="toggle-option"]').click()
             time.sleep(5)
 
-            # Logging in
+            # Log in
             self.p.locator(
                 'xpath=//input[@id="email-login"]').type(username)
             time.sleep(1)
