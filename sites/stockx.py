@@ -107,7 +107,10 @@ class StockX():
         # Compare self.margin from settings to margin based on stockx price in USD and net price in PLN
 
         try:
-            price = (price-(price*0.03)-(price*self.stockx_fee))*self.usd
+            price_pln = (price-(price*0.03)-(price*self.stockx_fee))*self.usd
+            # Rounding down to tens
+            a = price_pln % 10
+            price = price_pln-a
             if (price-net_price)/net_price >= self.margin:
                 return True
             else:
