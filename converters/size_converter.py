@@ -20,7 +20,7 @@ class Size:
                 except:
                     pass
                 return sizes['New_balance'][size]
-        elif '(W)' in self.name:
+        elif '(W)' in self.name or "(Women's)" in self.name:
             if 'UGG' in self.name:
                 return sizes['UGG'][size]
             else:

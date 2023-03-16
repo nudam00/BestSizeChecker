@@ -65,7 +65,10 @@ if __name__ == "__main__":
                 result = alias_sizes + \
                     list(set(stockx_sizes) - set(alias_sizes))
             except:
-                result = stockx_sizes
+                try:
+                    result = stockx_sizes + alias_sizes
+                except:
+                    result = stockx_sizes
 
             try:
                 result = sorted(result)
