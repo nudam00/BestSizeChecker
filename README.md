@@ -5,7 +5,7 @@ Find sizes where profit is above given margin. Scrapped sites:
 1. StockX (playwright) - prices must be in USD.
 2. Alias (requests) - prices must be in USD.
    <br />
-   StockX sometimes ends up blocked by PerimeterX, so the program will notify you when something is wrong and PerimeterX needs to be resolved..<br />
+   StockX sometimes ends up blocked by PerimeterX, so the program will notify you when something is wrong and PerimeterX needs to be resolved.<br />
 
 ## Converters
 
@@ -15,7 +15,7 @@ Converts sizes from US to EU sizes.
 
 ### settings.json - write your credentials on Alias and StockX, your StockX fee and margin.
 
-`{"email": "x", "alias_username": "x", "alias_password": "x", "stockx_password": "x", "stockx_fee": 0.x, "usd_rate": x, "proxy": "http://username:passw@ip:port"}`
+`{"email": "x", "alias_username": "x", "alias_password": "x", "stockx_password": "x", "stockx_fee": 0.x, "margin": x, "adidas_margin": x, "usd_rate": x, "proxy": "http://username:passw@ip:port"}`
 
 ### sneakers.xlsx
 

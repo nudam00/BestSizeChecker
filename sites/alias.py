@@ -110,10 +110,7 @@ class Alias:
         # Compare self.margin from settings to margin based on alias price in USD and net price in PLN
 
         try:
-            price_pln = (price*0.905-12)*self.usd*0.971
-            # Rounding down to tens
-            a = price_pln % 10
-            price = price_pln-a
+            price = (price*0.905-12)*self.usd*0.971
             if (price-net_price)/net_price >= self.margin:
                 return True
             else:

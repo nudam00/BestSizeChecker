@@ -2,7 +2,7 @@ from add import get_settings
 import time
 
 
-class StockX():
+class StockX:
 
     def __init__(self, username, password, margin, p, stockx_fee):
         self.usd = get_settings('usd_rate')
@@ -107,10 +107,7 @@ class StockX():
         # Compare self.margin from settings to margin based on stockx price in USD and net price in PLN
 
         try:
-            price_pln = (price-(price*0.03)-(price*self.stockx_fee))*self.usd
-            # Rounding down to tens
-            a = price_pln % 10
-            price = price_pln-a
+            price = (price-(price*0.03)-(price*self.stockx_fee))*self.usd
             if (price-net_price)/net_price >= self.margin:
                 return True
             else:
