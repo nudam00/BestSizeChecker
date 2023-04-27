@@ -81,8 +81,6 @@ class StockX:
                 try:
                     size = self.p.locator(
                         'xpath=//*[@id="main-container"]/div[1]/div[2]/div[3]/div/button[{}]/div'.format(i)).inner_text()
-                    if size == 'All Sizes':
-                        break
                     self.p.locator(
                         'xpath=//*[@id="main-container"]/div[1]/div[2]/div[3]/div/button[{}]'.format(i)).click()
                     try:
@@ -91,11 +89,13 @@ class StockX:
                     except:
                         price = 0
                     t += 2
-                    if self.__get_price(net_price, price) == True:
+                    if self.__get_price(net_price, price):
                         sizes.append(size)
                     break
                 except:
                     pass
+            if size == 'All Sizes':
+                break
 
         # Item name
         item_name1 = self.p.locator(
@@ -106,7 +106,7 @@ class StockX:
         return [item_name1+" "+item_name2, sizes]
 
     def __get_price(self, net_price, price):
-        # Compare self.margin from settings to margin based on stockx price in USD and net price in PLN
+        # Compares self.margin from settings to margin based on stockx price in USD and net price in PLN
 
         try:
             price = (price-(price*0.03)-(price*self.stockx_fee))*self.usd

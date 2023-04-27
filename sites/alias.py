@@ -100,14 +100,14 @@ class Alias:
 
                 try:
                     price = int(row['lowest_price_cents'][:-2])-1
-                    if self.__get_price(net_price, price) == True:
+                    if self.__get_price(net_price, price):
                         sizes.append(size)
                 except:
                     pass
         return sizes
 
     def __get_price(self, net_price, price):
-        # Compare self.margin from settings to margin based on alias price in USD and net price in PLN
+        # Compares self.margin from settings to margin based on alias price in USD and net price in PLN
 
         try:
             price = (price*0.905-12)*self.usd*0.971
