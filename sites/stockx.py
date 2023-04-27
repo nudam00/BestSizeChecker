@@ -81,6 +81,8 @@ class StockX:
                 try:
                     size = self.p.locator(
                         'xpath=//*[@id="main-container"]/div[1]/div[2]/div[3]/div/button[{}]/div'.format(i)).inner_text()
+                    if size == 'All Sizes':
+                        break
                     self.p.locator(
                         'xpath=//*[@id="main-container"]/div[1]/div[2]/div[3]/div/button[{}]'.format(i)).click()
                     try:
