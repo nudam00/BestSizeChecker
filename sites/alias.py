@@ -39,7 +39,8 @@ class Alias:
                 self.headers['Authorization'] = 'Bearer {}'.format(access)
                 print("Logged into alias account")
                 return scraper
-            except:
+            except Exception as e:
+                print(e)
                 continue
 
     def __get_product(self, sku):
