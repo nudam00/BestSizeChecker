@@ -1,5 +1,6 @@
 # SneakersBestSizes
 
+Not updated for a while, but it should still work. <br/>
 Find sizes where profit is above given margin. Scrapped sites:
 
 1. StockX (playwright) - prices must be in USD.
@@ -15,7 +16,7 @@ Converts sizes from US to EU sizes.
 
 ### settings.json - write your credentials on Alias and StockX, your StockX fee and margin.
 
-`{"email": "x", "alias_username": "x", "alias_password": "x", "stockx_password": "x", "stockx_fee": 0.x, "margin": x, "adidas_margin": x, "usd_rate": x, "proxy": "http://username:passw@ip:port"}`
+`{"email": "x", "alias_username": "x", "alias_password": "x", "stockx_password": "x", "stockx_fee": 0.x, "zal_margin": x, "margin": x, "usd_rate": x, "eur_rate": x, "proxy": "http://username:passw@ip:port"}`
 
 ### sneakers.xlsx
 
@@ -43,3 +44,4 @@ Some additional functions.
 ## main.py
 
 It brings the whole program together. Calls methods based on data in sneakers.xlsx and writes sizes to sizes.xlsx.
+

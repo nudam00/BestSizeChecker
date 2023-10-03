@@ -14,12 +14,14 @@ def get_size(name, size):
     sizes = json.load(json_file)
     try:
         if "new balance" in name:
-            return sizes['New_balance'][size]
+            return sizes["New_balance"][size]
         elif "adidas" in name:
-            return sizes['Adidas'][size]
+            return sizes["Adidas"][size]
         elif "nike" in name or "jordan" in name:
-            return sizes['Nike'][size]
+            return sizes["Nike"][size]
         elif "ugg" in name:
-            return sizes['UGG'][size]
+            return sizes["UGG"][size]
+        elif "asics" in name:
+            return sizes["Asics"][size]
     except:
-        return ''
+        return ""
