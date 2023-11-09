@@ -13,7 +13,7 @@ class Alias:
             "Accept": "application/json",
             "Accept-Encoding": "gzip, deflate, br",
             "Accept-Language": "pl-PL,pl;q=0.9",
-            "User-Agent": "alias/1.20.1 (iPhone; iOS 16.2; Scale/3.00) Locale/en",
+            "User-Agent": "alias/1.28.0 (iPhone; iOS 17; Scale/3.00) Locale/en",
             "x-emb-id": "2389040D96C04834A761C65276AC5564",
             "x-emb-st": str(int(time.time() * 1000)),
             "X-PX-AUTHORIZATION": "3",
@@ -121,6 +121,7 @@ class Alias:
                 }
                 # sales = json.loads(self.scraper.post(data=json.dumps(
                 #     data), headers=self.headers, url=self.url+'/analytics/orders/recent', proxies={"https": self.proxy}).text)
+                time.sleep(1)
                 sales = json.loads(
                     self.scraper.post(
                         data=json.dumps(data),

@@ -76,11 +76,19 @@ if __name__ == "__main__":
                     stockx_sizes = [
                         get_size(product_name.lower(), str(x)) for x in stockx_sizes
                     ]
-                    alias_sizes = [
-                        get_size(product_name.lower(), str(x)) for x in alias_sizes
-                    ]
+                    if "Women" in product_name:
+                        alias_sizes = [
+                            get_size(product_name.lower(), str(x) + "W")
+                            for x in alias_sizes
+                        ]
+                        print(alias_sizes)
+                    else:
+                        alias_sizes = [
+                            get_size(product_name.lower(), str(x)) for x in alias_sizes
+                        ]
                     result = alias_sizes + list(set(stockx_sizes) - set(alias_sizes))
-                except:
+                except Exception as e:
+                    print(e)
                     try:
                         result = stockx_sizes + alias_sizes
                     except:
