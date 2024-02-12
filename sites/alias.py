@@ -101,7 +101,10 @@ class Alias:
         sizes = []
         for row in rows["availability"]:
             if row["variant"]["product_condition"] == "PRODUCT_CONDITION_NEW":
-                size = row["variant"]["size"]
+                try:
+                    size = row["variant"]["size"]
+                except:
+                    continue
 
                 # If less than 10 sales then pass
                 if "." not in str(size):
@@ -148,7 +151,7 @@ class Alias:
         # Compares self.margin from settings to margin based on alias price in USD and net price in PLN
 
         try:
-            price = (price * 0.905 - 12) * self.usd * 0.971
+            price = (price * 0.905 - 6) * self.usd * 0.971
             if (price - net_price) / net_price >= self.margin:
                 return True
             else:
